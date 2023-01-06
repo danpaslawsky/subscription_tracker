@@ -1,5 +1,4 @@
-class CompanyController < ApplicationController
-  
+class SubscriptionsController < ApplicationController
   def index
   end
 
