@@ -12,8 +12,13 @@ class SubscriptionsController < ApplicationController
 
   # process submitted new form route: '/subscriptions' POSTS to INDEX route path: subscriptions_path  -- only used on server side
   def create
-    #byebug
-    @subscription = Subscription.create(params[:subscription])
+    @subscription = Subscription.new(subscription_params)
+    if @subscription.save
+      redirect_to subscription_path(@subscription)
+    else
+      #render preserves data to show user with hash of errors. redirect refreshes data
+      render :new
+    end
   end
 
   def show
@@ -29,7 +34,7 @@ class SubscriptionsController < ApplicationController
 
   # permits fields being submited
   def subscription_params
-    params.require(:subscription).permit(:amount, :date, :user_id, :organization_id)
+    params.require(:subscription).permit(:amount, :due_date, :user_id, :company_id)
   end
 
 end

@@ -1,2 +1,14 @@
 <h1>Subscriptions#index</h1>
 <p>Find me in app/views/subscriptions/index.html.erb</p>
+
+<% if @subscriptions.length == 0 %>
+    <%= "No Current Subscriptions" %>
+    <% else %>
+    <% @subscriptions.each do |s| %>
+      <p>  
+        Amount: <%= s.amount %>
+        Due Date: <%= s.due_date %>
+        Company: <%= s.company.name %>
+      </p>  
+    <% end %>
+<% end %>
