@@ -17,4 +17,4 @@ Company.create([
     {name: "Netflix"},
     {name: "MLB"},
     {name: "Disney"}
-])
+    ])
