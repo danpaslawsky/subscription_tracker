@@ -3,8 +3,8 @@ class CreateSubscriptions < ActiveRecord::Migration[6.0]
     create_table :subscriptions do |t|
       t.float :amount
       t.datetime :due_date
-      belongs_to :user
-      belongs_to :company
+      t.belongs_to :company
+      t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
     end
