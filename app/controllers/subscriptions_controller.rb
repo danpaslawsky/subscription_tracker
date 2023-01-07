@@ -21,7 +21,10 @@ class SubscriptionsController < ApplicationController
     end
   end
 
+  # render single subscription route: '/subscriptions/id' path: subscription_path(subscription_id)
   def show
+    # query donation table and pass in id
+    @subscription = Subscription.find_by_id(params[:id])
   end
 
   def edit
