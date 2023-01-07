@@ -10,12 +10,13 @@ class UsersController < ApplicationController
   def create
   end
 
+  def show
+  end
+
   def edit
   end
 
-  def delete
+  def destroy
   end
 
-  def show
-  end
 end
