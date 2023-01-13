@@ -31,7 +31,15 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.find_by_id(params[:id])
   end
 
+  def update
+    @subscription = Subscription.find_by_id(params[:id])
+    @subscription.update(params[:subscription])
+  end
+
   def destroy
+    @subscription = Subscription.find_by_id(params[:id])
+    @subscription.destroy
+    redirect_to subscriptions_path
   end
 
   private
