@@ -2,9 +2,13 @@ class UsersController < ApplicationController
   
 
   # render signup form
+  # instantiate an empty new user object to wrap(encapsulate) the login form around it
   def new
-    # instantiate an empty new user object to wrap(encapsulate) the login form around it
-    @user = User.new
+    if !logged_in?
+      @user = User.new
+    else
+      redirect_to root_path  
+    end
   end
 
   # resposible for proccesing signup form
