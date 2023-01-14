@@ -1,26 +1,31 @@
 class UsersController < ApplicationController
   
-  
-  def index 
-    
-  end
 
+  # render signup form
   def new
+    # instantiate an empty new user object to wrap(encapsulate) the login form around it
     @user = User.new
   end
 
+  # resposible for proccesing signup form
   def create
-    @user = User.new(user_params)
-
-    redirect_to user_path(@user)
+    user = User.new(user_params)
+    if user.save
+      # log user in
+      # [key] and set that to new users id
+      session[:user_id] = user.id
+      redirect_to root_path
+    else
+      # show errors with validation errors
+      # make them try again
+      render 'new'
+    end
   end
+
 
   def show
     @user = User.find_by_id(params[:id])
-  end
-
-  def edit
-  end
+  end 
 
   def destroy
   end
@@ -28,6 +33,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
+    # require :user hash and permit the fileds user will submit
     params.require(:user).permit(:username, :email, :password)
   end
 
