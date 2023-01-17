@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  
+  before_action :require_login
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
     @subscriptions = Subscription.all
@@ -13,6 +13,7 @@ class SubscriptionsController < ApplicationController
   # process submitted new form route: '/subscriptions' POSTS to INDEX route path: subscriptions_path  -- only used on server side
   def create
     @subscription = Subscription.new(subscription_params)
+    # @subscription = current_user.subscription.build(subscription_params)
     if @subscription.save
       redirect_to subscription_path(@subscription)
     else
@@ -48,5 +49,12 @@ class SubscriptionsController < ApplicationController
   def subscription_params
     params.require(:subscription).permit(:amount, :due_date, :user_id, :company_id)
   end
+
+  # def redirect_if_not_authorized
+  #   if @subscription.user != current_user
+  #       flash[:error] = "You can't make this edit, you are not the owner of this account"
+  #       redirect_to subscription_path
+  #   end    
+  # end
 
 end
