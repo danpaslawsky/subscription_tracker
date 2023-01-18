@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   
   def index
+    @companies = Company.all
   end
 
   def new
@@ -16,6 +17,9 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
+    @company = Company.find_by_id(params[:id])
+    @company.destroy
+    redirect_to companies_path
   end
 
 end

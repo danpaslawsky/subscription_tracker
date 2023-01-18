@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2023_01_06_233248) do
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.string "amount_per_month"
+    t.integer "amount_per_month"
     t.integer "company_id"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

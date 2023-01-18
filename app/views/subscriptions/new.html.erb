@@ -1,7 +1,28 @@
 <h1>Subscriptions#new</h1>
-<p>Find me in app/views/subscriptions/new.html.erb</p>
+Find me in app/views/subscriptions/new.html.erb
 
-<%= form_for(@subscription) do |f| %>
-        
 
+<h1>Create New Subscription</h1>
+
+<%= form_for @subscription do |f| %>
+    <p>
+        <%= f.label :amount_per_month %>
+        <%= f.text_field :amount_per_month %>
+    </p>
+
+    <h2>Name and Description Type of Comapany</h2>
+    <%= f.fields_for :company do |company_builder| %>   
+
+            <%= company_builder.label :name %>
+            <%= company_builder.text_field :name %>
+            <br>
+            <br>    
+            <%= company_builder.label :description %>
+            <%= company_builder.text_field :description %>    
+
+    <% end %>
+    <br>
+    <br>
+    <br>
+    <%= f.submit %>
 <% end %>
