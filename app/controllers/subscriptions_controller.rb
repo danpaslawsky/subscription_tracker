@@ -1,11 +1,10 @@
 class SubscriptionsController < ApplicationController
   before_action :require_login
-  before_action :current_user
+
   
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
     @subscriptions = Subscription.where(user: current_user)
-  
   end
 
   # render a new form route: '/subscriptions/new' path: new_subscription_path

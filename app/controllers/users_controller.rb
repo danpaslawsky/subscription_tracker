@@ -2,12 +2,12 @@ class UsersController < ApplicationController
   
 
   # render signup form
-  # instantiate an empty new user object to wrap(encapsulate) the login form around it
   def new
+    # instantiate an empty new user object to wrap(encapsulate) the login form around it
     if !logged_in?
       @user = User.new
     else
-      redirect_to root_path  
+      redirect_to root  
     end
   end
 
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def show
     @user = User.find_by_id(params[:id])
   end 
@@ -33,10 +34,10 @@ class UsersController < ApplicationController
   def destroy
   end
 
-  private
+private
 
+  # require :user hash and permit the fileds user will submit
   def user_params
-    # require :user hash and permit the fileds user will submit
     params.require(:user).permit(:username, :email, :password)
   end
 
