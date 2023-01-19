@@ -1,8 +1,19 @@
-<h1>Subscriptions#new</h1>
-Find me in app/views/subscriptions/new.html.erb
-
 
 <h1>Create New Subscription</h1>
+
+<% if @subscription.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@subscription.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+    <ul>
+    <% @subscription.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= form_for @subscription do |f| %>
     <p>
@@ -24,5 +35,7 @@ Find me in app/views/subscriptions/new.html.erb
     <br>
     <br>
     <br>
-    <%= f.submit %>
+    <%= f.submit %>  
 <% end %>
+<br>
+<%= link_to 'See All My Subscriptions', subscriptions_path %>

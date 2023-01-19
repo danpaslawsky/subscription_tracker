@@ -1,6 +1,5 @@
-<h1>Subscriptions#index</h1>
-<p>Find me in app/views/subscriptions/index.html.erb</p>
-
+<h1>All My Current Subscriptions</h1>
+<br>
 <% if @subscriptions.length == 0 %>
     <h2>No Current Subscriptions</h2>
     <% else %>
@@ -13,4 +12,7 @@
         <%= button_to 'Delete', subscription_path(s.id), method: 'delete' %>
       </p>  
     <% end %>
+    <br>
+    <%= link_to 'Create New Subscription', new_subscription_path %>
+
 <% end %>

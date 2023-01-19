@@ -1,4 +1,7 @@
-<h1>Welcome Page</h2>
+<h3>Welcome To Your Personal Subscription Tracker</h3>
+<h3>Where You Can Keep Track Of All Your Monthly Subscriptions</h3>
 
-
-<%= button_to 'Logout', logout_path %>
+<% if logged_in? %>
+ <%= link_to 'Create New Subscription', new_subscription_path %><br><br>
+ <%= link_to 'See All My Subscriptions', subscriptions_path %>
+<% end %>

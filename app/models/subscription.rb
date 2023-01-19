@@ -4,8 +4,8 @@ class Subscription < ApplicationRecord
 
     accepts_nested_attributes_for :company
     
-    
-    
+    validates :amount_per_month, presence: true, numericality: { only_integer: true }
+
     # def companies_attributes=(companies_attributes) 
     #     companies_attributes.each do |company_attributes|
     #       self.companies.build(company_attributes)

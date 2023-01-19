@@ -1,7 +1,4 @@
-<h1>Subscriptions#show</h1>
-<p>Find me in app/views/subscriptions/show.html.erb</p>
-
-
+<h2>Your New Subscription Was Added To Your Account</h2>
 
 Company: <%= @subscription.company.name %></br>
 Company Description: <%= @subscription.company.description %></br>
@@ -10,4 +7,6 @@ Amount Per Month: $<%= @subscription.amount_per_month %></br>
 
 </br>
 </br>
-<%= button_to 'Delete', subscription_path(@subscription), method: 'delete' %>
+<%= button_to 'Delete', subscription_path(@subscription), method: 'delete' %><br><br>
+<%= link_to 'Create New Subscription', new_subscription_path %><br><br>
+<%= link_to 'See All My Subscriptions', subscriptions_path %>
