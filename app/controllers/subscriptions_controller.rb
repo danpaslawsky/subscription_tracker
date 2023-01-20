@@ -50,7 +50,7 @@ class SubscriptionsController < ApplicationController
 
   # permits fields being submited
   def subscription_params
-    params.require(:subscription).permit(:amount_per_month, :type_of_subscription, company_attributes: [:name])
+    params.require(:subscription).permit(:amount_per_month, :type_of_subscription, :company_id, company_attributes: [:name])
   end
 
   # def redirect_if_not_authorized

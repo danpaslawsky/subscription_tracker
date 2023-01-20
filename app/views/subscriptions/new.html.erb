@@ -25,15 +25,16 @@
         <%= f.text_field :type_of_subscription %>
     </p>
 
-    <h2>Name and Description Type of Comapany</h2>
+    <h2>Select Name of Comapany</h2>
+    <%= f.collection_select(:company_id, Company.all, :id, :name, prompt: true) %><br><br>
     
+    <h3>Or Create One</h3>
     <%= f.fields_for :company do |company_builder| %>   
-
+        <p>
             <%= company_builder.label :name %>
             <%= company_builder.text_field :name %>   
-
+        </p>
     <% end %>
-    <br>
     <br>
     <br>
     <%= f.submit %>  
