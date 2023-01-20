@@ -14,13 +14,13 @@ ActiveRecord::Schema.define(version: 2023_01_06_233248) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer "amount_per_month"
+    t.string "type_of_subscription"
     t.integer "company_id"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -19,6 +19,10 @@
     <p>
         <%= f.label :amount_per_month %>
         <%= f.text_field :amount_per_month %>
+        <br>
+        <br>
+        <%= f.label :type_of_subscription %>
+        <%= f.text_field :type_of_subscription %>
     </p>
 
     <h2>Name and Description Type of Comapany</h2>
@@ -26,11 +30,7 @@
     <%= f.fields_for :company do |company_builder| %>   
 
             <%= company_builder.label :name %>
-            <%= company_builder.text_field :name %>
-            <br>
-            <br>    
-            <%= company_builder.label :description %>
-            <%= company_builder.text_field :description %>    
+            <%= company_builder.text_field :name %>   
 
     <% end %>
     <br>

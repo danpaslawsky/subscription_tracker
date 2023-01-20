@@ -6,7 +6,7 @@
     <% @subscriptions.each do |s| %>
       <p>  
         Company: <%= s.company.name %></br>
-        Company Description: <%= s.company.description %><br>
+        Type_of_subscription: <%= s.type_of_subscription %><br>
         Amount Per Month: $<%= s.amount_per_month %></br>
 
         <%= button_to 'Delete', subscription_path(s.id), method: 'delete' %>
