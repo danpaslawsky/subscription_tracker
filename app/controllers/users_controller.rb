@@ -13,16 +13,17 @@ class UsersController < ApplicationController
 
   # resposible for proccesing signup form
   def create
-    user = User.new(user_params)
-    if user.save
+    @user = User.new(user_params)
+    if @user.save
       # log user in
       # [key] and set that to new users id
       session[:user_id] = user.id
       redirect_to root_path
     else
       # show errors with validation errors
+
       # make them try again
-      render 'new'
+      render :new
     end
   end
 
