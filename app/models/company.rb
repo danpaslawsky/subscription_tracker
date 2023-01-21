@@ -5,4 +5,8 @@ class Company < ApplicationRecord
     validates :name, presence: true
 
 
+    # Scope method that organizes subscriptions by their companies 
+    
+
+
 end

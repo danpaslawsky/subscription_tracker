@@ -1,5 +1,5 @@
 class Subscription < ApplicationRecord
-    belongs_to :user
+    belongs_to :user, optional: true
     belongs_to :company
 
     
@@ -11,4 +11,9 @@ class Subscription < ApplicationRecord
             self.company = Company.find_or_create_by(company_attributes)
         end
     end
+
+
+    
+
+
 end
