@@ -8,9 +8,5 @@
     <% else %>
         <% @companies.each do |s| %>
             Name: <%= s.name %>
-            </br>
-            <%= button_to 'Delete', company_path(s.id), method: 'delete' %>
-            </br>
-            </br>
         <% end %>   
 <% end %>

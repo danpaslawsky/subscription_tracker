@@ -12,8 +12,6 @@ class Subscription < ApplicationRecord
         end
     end
 
-
-    
-
+    scope :list, -> {joins(:company).group('subscriptions.amount_per_month').order('amount_per_month')}
 
 end

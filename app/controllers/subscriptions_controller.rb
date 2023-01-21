@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
-    @subscriptions = Subscription.where(user: current_user)
+    @subscriptions = Subscription.where(user: current_user).list
   end
 
   # render a new form route: '/subscriptions/new' path: new_subscription_path
