@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       # log user in
       # [key] and set that to new users id
-      session[:user_id] = @user.id
+      session[:user_id] = user.id
       redirect_to root_path
     else
       # show errors with validation errors
