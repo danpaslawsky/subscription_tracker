@@ -4,7 +4,14 @@ class SubscriptionsController < ApplicationController
   
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
-    @subscriptions = Subscription.where(user: current_user).list
+    if params[:user_id]
+      @subscriptions = Subscription.user_subscription_index(current_user)
+      #@subscriptions = User.find_by(params[:user_id]).subscriptions.list_by_amount
+      # @user = User.find_by(params[:user_id])
+      # @subscriptions = @User.subscriptions
+    else
+      @subscriptions = Subscription.where(user: current_user).list_by_amount
+    end
   end
 
   # render a new form route: '/subscriptions/new' path: new_subscription_path
@@ -17,7 +24,7 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = current_user.subscriptions.build(subscription_params)
     if @subscription.save
-      redirect_to subscription_path(@subscription)
+      redirect_to user_subscription_path(:user_id, @subscription)
     else
       #render preserves data to show user with hash of errors. redirect refreshes data
       render :new
@@ -43,7 +50,7 @@ class SubscriptionsController < ApplicationController
     #binding.pry
     @subscription = Subscription.find_by_id(params[:id])
     @subscription.destroy
-    redirect_to subscriptions_path
+    redirect_to user_subscriptions_path(:user_id)
   end
 
   private

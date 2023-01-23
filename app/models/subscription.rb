@@ -12,6 +12,9 @@ class Subscription < ApplicationRecord
         end
     end
 
-    scope :list, -> {joins(:company).group('subscriptions.amount_per_month').order('amount_per_month')}
+    scope :list_by_amount, -> {joins(:company).group('subscriptions.amount_per_month').order('amount_per_month')}
 
+    def self.user_subscription_index(user) #queries all cocktails for a  specific user for index view
+        @subscriptions = user.subscriptions.all
+    end 
 end

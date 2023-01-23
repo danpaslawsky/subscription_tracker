@@ -3,5 +3,5 @@
 
 <% if logged_in? %>
  <%= link_to 'Create New Subscription', new_subscription_path %><br><br>
- <%= link_to 'See All My Subscriptions', subscriptions_path %>
+ <%= link_to 'See All My Subscriptions', user_subscriptions_path(:user_id) %>
 <% end %>
