@@ -6,9 +6,6 @@ class SubscriptionsController < ApplicationController
   def index
     if params[:user_id]
       @subscriptions = Subscription.user_subscription_index(current_user).list_by_amount
-      #@subscriptions = User.find_by(params[:user_id]).subscriptions.list_by_amount
-      # @user = User.find_by(params[:user_id])
-      # @subscriptions = @User.subscriptions
     else
       @subscriptions = Subscription.where(user: current_user).list_by_amount
     end
@@ -57,7 +54,7 @@ class SubscriptionsController < ApplicationController
 
   # permits fields being submited
   def subscription_params
-    params.require(:subscription).permit(:amount_per_month, :type_of_subscription, :company_id, company_attributes: [:name])
+    params.require(:subscription).permit(:amount_per_month, :type_of_subscription, :user_id, :company_id, company_attributes: [:name])
   end
 
   # def redirect_if_not_authorized
