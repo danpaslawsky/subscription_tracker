@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
     if params[:user_id]
-      @subscriptions = Subscription.user_subscription_index(current_user)
+      @subscriptions = Subscription.user_subscription_index(current_user).list_by_amount
       #@subscriptions = User.find_by(params[:user_id]).subscriptions.list_by_amount
       # @user = User.find_by(params[:user_id])
       # @subscriptions = @User.subscriptions
@@ -16,7 +16,7 @@ class SubscriptionsController < ApplicationController
 
   # render a new form route: '/subscriptions/new' path: new_subscription_path
   def new
-    @subscription = Subscription.new
+    @subscription = Subscription.new(user_id: params[:user_id])
     @subscription.build_company
   end
 
