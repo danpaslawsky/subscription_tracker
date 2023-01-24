@@ -28,7 +28,7 @@
  
 |X| Include nested resource show AND index (URL e.g. users/2/recipes)
  
-### Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+|X| Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
  
 |X| Include form display of validation errors (form URL e.g. /recipes/new)
 
