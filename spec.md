@@ -24,7 +24,7 @@
  
 |X| Include logout
  
-### Include third party signup/login (how e.g. Devise/OmniAuth)
+|X| Include third party signup/login (how e.g. Devise/OmniAuth)
  
 |X| Include nested resource show AND index (URL e.g. users/2/recipes)
  
