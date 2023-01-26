@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :require_login
-
+  before_action :set_recipe, except: [:index, :new, :create]
   
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
@@ -30,22 +30,16 @@ class SubscriptionsController < ApplicationController
 
   # render single subscription route: '/subscriptions/id' path: subscription_path(subscription_id)
   def show
-    # query donation table and pass in id - find obj
-    @subscription = Subscription.find_by_id(params[:id])
   end
 
   def edit
-    @subscription = Subscription.find_by_id(params[:id])
   end
 
   def update
-    @subscription = Subscription.find_by_id(params[:id])
     @subscription.update(params[:subscription])
   end
 
   def destroy
-    #binding.pry
-    @subscription = Subscription.find_by_id(params[:id])
     @subscription.destroy
     redirect_to user_subscriptions_path(:user_id)
   end
@@ -55,6 +49,11 @@ class SubscriptionsController < ApplicationController
   # permits fields being submited
   def subscription_params
     params.require(:subscription).permit(:amount_per_month, :type_of_subscription, :user_id, :company_id, company_attributes: [:name])
+  end
+
+   # query donation table and pass in id - find obj
+  def set_recipe
+    @subscription = Subscription.find_by_id(params[:id])
   end
 
   # def redirect_if_not_authorized
