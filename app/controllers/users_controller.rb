@@ -21,7 +21,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       # show errors with validation errors
-
       # make them try again
       render :new
     end

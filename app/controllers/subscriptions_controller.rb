@@ -21,7 +21,7 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = current_user.subscriptions.build(subscription_params)
     if @subscription.save
-      redirect_to user_subscription_path(:user_id, @subscription)
+      redirect_to user_subscription_path(current_user.username, @subscription)
     else
       #render preserves data to show user with hash of errors. redirect refreshes data
       render :new
@@ -41,10 +41,10 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     @subscription.destroy
-    redirect_to user_subscriptions_path(:user_id)
+    redirect_to user_subscriptions_path(current_user.username)
   end
 
-  private
+private
 
   # permits fields being submited
   def subscription_params
@@ -55,12 +55,5 @@ class SubscriptionsController < ApplicationController
   def set_recipe
     @subscription = Subscription.find_by_id(params[:id])
   end
-
-  # def redirect_if_not_authorized
-  #   if @subscription.user != current_user
-  #       flash[:error] = "You can't make this edit, you are not the owner of this account"
-  #       redirect_to subscription_path
-  #   end    
-  # end
 
 end

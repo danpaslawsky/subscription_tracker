@@ -40,4 +40,4 @@
     <%= f.submit %>  
 <% end %>
 <br>
-<%= link_to 'See All My Subscriptions', user_subscriptions_path(:user_id) %>
+<%= link_to 'See All My Subscriptions', user_subscriptions_path(current_user.username) %>
