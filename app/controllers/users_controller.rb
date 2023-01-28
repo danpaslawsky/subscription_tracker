@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   
 
+  def index
+    @users = User.all
+  end
+
   # render signup form
   def new
     # instantiate an empty new user object to wrap(encapsulate) the login form around it
@@ -30,6 +34,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
   end 
+
+  def edit
+    @user = User.find_by_id(params[:id])
+  end
 
   def destroy
   end

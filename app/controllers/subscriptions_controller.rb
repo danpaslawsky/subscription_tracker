@@ -38,6 +38,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
+  
   end
 
   def update

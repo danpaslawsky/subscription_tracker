@@ -3,18 +3,15 @@
 
 <%= form_for(@subscription) do |f| %>
 
-    <%= f.label :amount %>
-    <%= f.number_field :amount %></br>
+    <%= f.label :name %>
+    <%= f.text_field :name %></br>
     </br>
-    <%= f.label :due_date %>
-    <%= f.datetime_field :due_date %></br>
+    <%= f.label :amount_per_month %>
+    <%= f.number_field :amount_per_month %></br>
     </br>
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %></br>
+    <%= f.label :type_of_subscription %>
+    <%= f.text_field :type_of_subscription %></br>
     </br>
-    <%= f.label :company_id %>
-    <%= f.number_field :company_id %></br>
-    </br>
+
     <%= f.submit %>
-    
-    <% end %>    
+<% end %>    
