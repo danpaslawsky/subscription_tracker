@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SubscriptionTracker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+   
+  </head>
+
+  <body>
+
+  <h1>Subscription Tracker</h1>
+        <% if logged_in? %>             
+            <%= button_to 'Logout', logout_path %>               
+        <% end %>
+  <br>
+  <%= link_to 'See All My Subscriptions', user_subscriptions_path(current_user.username) %>
+
+    <%= yield %>
+  </body>
+</html>

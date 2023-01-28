@@ -8,5 +8,3 @@ Amount Per Month: $<%= @subscription.amount_per_month %></br>
 </br>
 </br>
 <%= button_to 'Delete', subscription_path(@subscription), method: 'delete' %><br><br>
-<%= link_to 'Create New Subscription', new_user_subscription_path(current_user.username) %><br><br>
-<%= link_to 'See All My Subscriptions', user_subscriptions_path(current_user.username) %>

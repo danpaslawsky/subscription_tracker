@@ -1,12 +1,13 @@
 <h1>Company#index</h1>
 <p>Find me in app/views/company/index.html.erb</p>
 
-<h1>List Of Comapanies You have A Subscription To:</h1>
+<h1>List Of Comapanies You Have A Subscription To:</h1>
 
 <% if @companies.length == 0 %>
         <h2>No Current Comapany Subscriptions</h2>
     <% else %>
         <% @companies.each do |s| %>
-            Name: <%= s.name %>
+            -<%= s.name %><br>
         <% end %>   
 <% end %>
+

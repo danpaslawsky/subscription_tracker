@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
   before_action :require_login
   before_action :set_recipe, except: [:index, :new, :create]
+
   
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
@@ -9,12 +10,15 @@ class SubscriptionsController < ApplicationController
     else
       @subscriptions = Subscription.where(user: current_user).list_by_amount
     end
+    render action: "index", layout: "create_new_subscription"
   end
 
   # render a new form route: '/subscriptions/new' path: new_subscription_path
   def new
     @subscription = Subscription.new(user_id: params[:user_id])
     @subscription.build_company
+
+    render action: "new", layout: "all_users_subscriptions"
   end
 
   # process submitted new form route: '/subscriptions' POSTS to INDEX route path: subscriptions_path  -- only used on server side
@@ -30,6 +34,7 @@ class SubscriptionsController < ApplicationController
 
   # render single subscription route: '/subscriptions/id' path: subscription_path(subscription_id)
   def show
+    render action: "show", layout: "all_users_subscriptions"
   end
 
   def edit
