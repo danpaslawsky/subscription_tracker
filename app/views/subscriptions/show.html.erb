@@ -3,8 +3,6 @@
 Company: <%= @subscription.company.name %></br>
 Type of Subscription: <%= @subscription.type_of_subscription %></br>
 Amount Per Month: $<%= @subscription.amount_per_month %></br>
-
-
 </br>
 </br>
 <%= button_to 'Delete', subscription_path(@subscription), method: 'delete' %><br><br>

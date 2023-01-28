@@ -1,7 +1,7 @@
 <h1>Subscriptions#edit</h1>
 <p>Find me in app/views/subscriptions/edit.html.erb</p>
 
-<%= form_for(@subscription) do |f| %>
+<%= form_with model: @subscription do |f| %>
 
     <%= f.label :name %>
     <%= f.text_field :name %></br>
@@ -13,5 +13,5 @@
     <%= f.text_field :type_of_subscription %></br>
     </br>
 
-    <%= f.submit %>
+    <%= f.submit %> 
 <% end %>    

@@ -16,14 +16,7 @@
 <% end %>
 
 <%= form_for @subscription do |f| %>
-    <p>
-        <%= f.label :amount_per_month %>
-        <%= f.text_field :amount_per_month %>
-        <br>
-        <br>
-        <%= f.label :type_of_subscription %>
-        <%= f.text_field :type_of_subscription %>
-    </p>
+    <%= render partial: "form", locals: {f: f} %>
 
     <h2>Select Name of Comapany</h2>
     <%= f.collection_select(:company_id, Company.all, :id, :name, prompt: true) %><br><br>
