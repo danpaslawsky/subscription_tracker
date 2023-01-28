@@ -1,21 +1,10 @@
 
 <h1>Create New Subscription</h1>
 
-<% if @subscription.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@subscription.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h2>
-    <ul>
-    <% @subscription.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: "layouts/errors", locals: {object: @subscription} %>
 
 <%= form_for @subscription do |f| %>
+  
     <%= render partial: "form", locals: {f: f} %>
 
     <h2>Select Name of Comapany</h2>
