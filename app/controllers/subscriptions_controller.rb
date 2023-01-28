@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
     if params[:user_id]
       @subscriptions = Subscription.user_subscription_index(current_user).list_by_amount
     else
-      @subscriptions = Subscription.where(user: current_user).list_by_amount
+      @subscriptions = Subscription.where(user: current_user)
     end
     render action: "index", layout: "create_new_subscription"
   end
@@ -38,11 +38,14 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
-  
   end
 
   def update
-    @subscription.update(params[:subscription])
+    if @subscription.update(subscription_params)
+      redirect_to user_subscription_path(current_user.username, @subscription)
+    else
+      render :edit
+    end
   end
 
   def destroy
