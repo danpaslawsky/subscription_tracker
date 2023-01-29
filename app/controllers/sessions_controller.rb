@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
           session[:user_id] = user.id
           redirect_to root_path
         else
+          flash[:error] = "* Login info was incorrect. Please try again. *"
           render :new          
         end
     end
