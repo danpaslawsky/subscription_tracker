@@ -1,5 +1,10 @@
-<h1>All My Current Subscriptions</h1>
-<br>
+
+<% if current_user %>  
+  <h2><%= current_user.username.upcase %>'S Current Subscriptions</h2>
+<% else %>  
+<h1>All Current Subscriptions</h1>
+<% end %>
+
 <% if @subscriptions.length == 0 %>
     <h2>No Current Subscriptions</h2>
     <% else %>
@@ -12,7 +17,7 @@
             <%= link_to 'edit', edit_subscription_path(s.id) %>
           <% end %>
 
-        <%= button_to 'Delete', subscription_path(s.id), method: 'delete' %>
+        <%= button_to 'Delete', subscription_path(s.id), method: 'delete' %><br>
       </p>  
     <% end %>
     <br>
