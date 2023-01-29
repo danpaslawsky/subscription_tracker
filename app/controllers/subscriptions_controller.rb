@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :require_login
-  before_action :set_recipe, except: [:index, :new, :create]
+  before_action :set_subscription, except: [:index, :new, :create]
 
   
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
@@ -38,6 +38,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -61,7 +62,7 @@ private
   end
 
    # query donation table and pass in id - find obj
-  def set_recipe
+  def set_subscription
     @subscription = Subscription.find_by_id(params[:id])
   end
 

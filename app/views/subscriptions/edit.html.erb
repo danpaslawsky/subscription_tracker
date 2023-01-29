@@ -1,17 +1,26 @@
 <h1>Subscriptions#edit</h1>
 <p>Find me in app/views/subscriptions/edit.html.erb</p>
 
+<h1>Update Your Subscription Here</h1>
+
 <%= form_with model: @subscription do |f| %>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %></br>
-    </br>
-    <%= f.label :amount_per_month %>
-    <%= f.number_field :amount_per_month %></br>
-    </br>
-    <%= f.label :type_of_subscription %>
-    <%= f.text_field :type_of_subscription %></br>
-    </br>
+    <p>
+        <%= f.label :amount_per_month %>
+        <%= f.text_field :amount_per_month %>
+        <br>
+        <br>
+        <%= f.label :type_of_subscription %>
+        <%= f.text_field :type_of_subscription %>
+    </p>
+    <%= f.fields_for :company do |company_builder| %>   
+        <p>
+            <%= company_builder.label :name %>
+            <%= company_builder.text_field :name %>   
+        </p>
+    <% end %>
+    <br>
+    <br>
+    <%= f.submit %>  
 
-    <%= f.submit %> 
 <% end %>    

@@ -8,6 +8,9 @@
         Company: <%= s.company.name %></br>
         Type_of_subscription: <%= s.type_of_subscription %><br>
         Amount Per Month: $<%= s.amount_per_month %></br>
+          <% if current_user == s.user %>
+            <%= link_to 'edit', edit_subscription_path(s.id) %>
+          <% end %>
 
         <%= button_to 'Delete', subscription_path(s.id), method: 'delete' %>
       </p>  
