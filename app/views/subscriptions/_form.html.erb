@@ -1,6 +1,6 @@
 <p>
     <%= f.label :amount_per_month %>
-    <%= f.text_field :amount_per_month %>
+    <%= f.number_field :amount_per_month, step: 0.01 %>
     <br>
     <br>
     <%= f.label :type_of_subscription %>
