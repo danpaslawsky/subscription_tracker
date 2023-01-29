@@ -7,14 +7,7 @@
 
     <%= render partial: "form", locals: {f: f} %>
     
-    <%= f.fields_for :company do |company_builder| %>   
-        <p>
-            <%= company_builder.label :name %>
-            <%= company_builder.text_field :name %>   
-        </p>
-    <% end %>
-    <br>
-    <br>
-    <%= f.submit %>  
+    <%= render partial: "nested_form", locals: {f: f} %>
 
+    <%= f.submit %>
 <% end %>    

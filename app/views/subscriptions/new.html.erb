@@ -11,14 +11,7 @@
     <%= f.collection_select(:company_id, Company.all, :id, :name, prompt: true) %><br><br>
     
     <h3>Or Create One</h3>
-    <%= f.fields_for :company do |company_builder| %>   
-        <p>
-            <%= company_builder.label :name %>
-            <%= company_builder.text_field :name %>   
-        </p>
-    <% end %>
-    <br>
-    <br>
+    <%= render partial: "nested_form", locals: {f: f} %>
+
     <%= f.submit %>  
 <% end %>
-<br>
