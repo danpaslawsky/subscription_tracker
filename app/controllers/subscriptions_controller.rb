@@ -16,7 +16,7 @@ class SubscriptionsController < ApplicationController
   # render a new form route: '/subscriptions/new' path: new_subscription_path
   def new
     @subscription = Subscription.new(user_id: params[:user_id])
-    @subscription.build_company
+    @company = @subscription.build_company
 
     render action: "new", layout: "all_users_subscriptions"
   end
@@ -24,6 +24,8 @@ class SubscriptionsController < ApplicationController
   # process submitted new form route: '/subscriptions' POSTS to INDEX route path: subscriptions_path  -- only used on server side
   def create
     @subscription = current_user.subscriptions.build(subscription_params)
+    @company = @subscription.company
+    #binding.pry
     if @subscription.save
       redirect_to user_subscription_path(current_user.username, @subscription)
     else
