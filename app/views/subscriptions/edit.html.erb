@@ -1,7 +1,6 @@
-<h1>Subscriptions#edit</h1>
-<p>Find me in app/views/subscriptions/edit.html.erb</p>
-
 <h1>Update Your Subscription Here</h1>
+
+<%= render partial: "layouts/flash_errors", locals: {object: @subscription} %>
 
 <%= form_with model: @subscription do |f| %>
 

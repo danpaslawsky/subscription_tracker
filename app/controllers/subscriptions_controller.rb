@@ -38,13 +38,13 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
     if @subscription.update(subscription_params)
       redirect_to user_subscription_path(current_user.username, @subscription)
     else
+      flash.now[:notice] =  "* Please Complete ALL Fields *"
       render :edit
     end
   end
