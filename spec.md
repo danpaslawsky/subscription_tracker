@@ -35,7 +35,7 @@
 
 # Confirm:
 
-|X| The application is pretty DRY
+### The application is pretty DRY
 |X| Limited logic in controllers
 ### Views use helper methods if appropriate
-|X| Views use partials if appropriate
+### Views use partials if appropriate
