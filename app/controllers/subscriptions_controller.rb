@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
     if params[:user_id]
       @subscriptions = Subscription.user_subscription_index(current_user).list_by_amount
     else
-      @subscriptions = Subscription.where(user: current_user)
+      @subscriptions = current_user.subscriptions
     end
     render action: "index", layout: "create_new_subscription"
   end
@@ -16,7 +16,7 @@ class SubscriptionsController < ApplicationController
   # render a new form route: '/subscriptions/new' path: new_subscription_path
   def new
     @subscription = Subscription.new(user_id: params[:user_id])
-    @subscription.build_company
+    @company = @subscription.build_company
 
     render action: "new", layout: "all_users_subscriptions"
   end
@@ -24,7 +24,8 @@ class SubscriptionsController < ApplicationController
   # process submitted new form route: '/subscriptions' POSTS to INDEX route path: subscriptions_path  -- only used on server side
   def create
     @subscription = current_user.subscriptions.build(subscription_params)
-    if @subscription.save
+    @company = @subscription.company
+    if @subscription.save && @company.valid?
       redirect_to user_subscription_path(current_user.username, @subscription)
     else
       #render preserves data to show user with hash of errors. redirect refreshes data
@@ -38,6 +39,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def edit
+    @company = @subscription.company
   end
 
   def update

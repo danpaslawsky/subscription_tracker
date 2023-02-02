@@ -6,7 +6,7 @@
 
     <%= render partial: "form", locals: {f: f} %>
     
-    <%= render partial: "nested_form", locals: {f: f} %>
+    <%= render partial: "nested_form", locals: {f: f, company: @company} %>
 
     <%= f.submit %>
 <% end %>    

@@ -11,7 +11,7 @@
     <%= f.collection_select(:company_id, Company.all, :id, :name, prompt: true) %><br><br>
     
     <h3>Or Create One</h3>
-    <%= render partial: "nested_form", locals: {f: f} %>
+    <%= render partial: "nested_form", locals: {f: f, company: @company} %>
 
     <%= f.submit %>  
 <% end %>
