@@ -39,3 +39,6 @@
 |X| Limited logic in controllers
 ### Views use helper methods if appropriate
 |X| Views use partials if appropriate
+
+
+testing git tree
