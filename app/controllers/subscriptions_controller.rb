@@ -2,7 +2,6 @@ class SubscriptionsController < ApplicationController
   before_action :require_login
   before_action :set_subscription, except: [:index, :new, :create]
 
-  #testing git tree
   # show all subscriptions route: '/subscriptions' path: subscriptions_path
   def index
     if params[:user_id]
